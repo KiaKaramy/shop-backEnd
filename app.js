@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 const Verification = require("./src/router/Verification.router")
 const cookieParser = require("cookie-parser")
-
+const cors = require("cors")
 // const {GetRegister} = require("")
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
