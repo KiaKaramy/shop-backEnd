@@ -14,6 +14,4 @@ app.get("/" , (req , res)=>{
     res.json({messge : "fuck you"})
 })
 
-module.exports = {
-    app
-}
+module.exports =  app;
