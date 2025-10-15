@@ -7,6 +7,4 @@ async function UserServerStartConection() {
     console.log("CONNECTION WAS SUCCESFUL");
 }
 
-module.exports = {
-    UserServerStartConection
-}
+module.exports =  UserServerStartConection;
