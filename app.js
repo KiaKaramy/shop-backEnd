@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const {Verification} = require("./src/router/Verification.router")
+const Verification = require("./src/router/Verification.router")
 const cookieParser = require("cookie-parser")
 
 // const {GetRegister} = require("")

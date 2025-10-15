@@ -6,6 +6,4 @@ Verification.post("/sendCode" , /*send code*/ sendCodeController);
 Verification.post("/checkCode" , /*check code*/ checkCode);
 
 
-module.exports = {
-    Verification
-}
+module.exports =  Verification;
