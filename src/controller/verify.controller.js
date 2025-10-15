@@ -47,7 +47,7 @@ const transporter = nodemailer.createTransport({
     subject: "کد تأیید شما",
     text: `کد تأیید شما: ${code}`,
   });
-
+res.json(data);
     console.log(req.body)
 }
 
