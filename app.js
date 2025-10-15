@@ -19,9 +19,9 @@ app.get("/" , (req , res)=>{
 })
 
 
-await UserServerStartConection()
+UserServerStartConection()
     .then(() => console.log("MongoDB connected!"))
     .catch((err) => console.error("MongoDB connection error:", err));
 
-
+    
 module.exports =  app;
