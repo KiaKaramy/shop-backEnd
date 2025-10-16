@@ -14,8 +14,8 @@ const passwordRegex = /^.{1,10}$/;
 if(!gmailRegex.test(req.body.Gmail)  || !nameRegex.test(req.body.FullName) || !passwordRegex.test(req.body.Password)){
    return res.json({error : "there is problem in value"})
 }
-
-if(await Users.find({email : req.body.Gmail}) == false){
+const user = await Users.find({email : req.body.Gmail});
+if(user){
     return res.json({error : "ther is an account with this name"});
 }
 
