@@ -16,8 +16,7 @@ if(!gmailRegex.test(req.body.Gmail)  || !nameRegex.test(req.body.FullName) || !p
 }
 const user = await Users.find({email : req.body.Gmail});
 console.log(typeof(user));
-const arrayem = {};
-console.log(typeof(arrayem))
+
 console.log(user)
 //if it was't not null it's mean thats null 
 //null == means there wasnt any account
