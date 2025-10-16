@@ -15,9 +15,13 @@ if(!gmailRegex.test(req.body.Gmail)  || !nameRegex.test(req.body.FullName) || !p
    return res.json({error : "there is problem in value"})
 }
 const user = await Users.find({email : req.body.Gmail});
-console.log(user);
-
-if(user !== null){
+console.log(typeof(user));
+const arrayem = {};
+console.log(typeof(arrayem))
+console.log(user)
+//if it was't not null it's mean thats null 
+//null == means there wasnt any account
+if(user.length != 0 ){
     return res.json({error : "ther is an account with this name"});
 }
 
