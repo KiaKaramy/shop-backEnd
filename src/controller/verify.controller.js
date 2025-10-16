@@ -15,7 +15,7 @@ if(!gmailRegex.test(req.body.Gmail)  || !nameRegex.test(req.body.FullName) || !p
    return res.json({error : "there is problem in value"})
 }
 
-if(!await Users.find({email : req.body.Gmail})){
+if(await Users.find({email : req.body.Gmail})){
     return res.json({error : "ther is an account with this name"});
 }
 
