@@ -1,10 +1,9 @@
 const verifyUser = require("../modules/verifyUser.module");
 const Users = require("../modules/User.module");
-const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const configs = require("../config/env");
 const cookieParser = require("cookie-parser")
-
+const {Resend} = require("resend");
 
 async function sendCodeController(req , res){
 const gmailRegex = /^[\w.-]+@gmail\.com$/;
@@ -36,22 +35,15 @@ expiresAt : expiresAt
 }
 
 await verifyUser.create(data)
-
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "kiakrmi0@gmail.com",
-      pass: "mblw wwif yvup vntx ",
-    },
-  });
+const resend = new Resend(configs.config.Resend_API_KEY);
 
 
-  await transporter.sendMail({
-    from: "kiakrmi0@gmail.com",
-    to: req.body.Gmail,
-    subject: "کد تأیید شما",
-    text: `کد تأیید شما: ${code}`,
-  });
+  await resend.emails.send({
+  from: 'onboarding@resend.dev',
+  to: req.body.Gmail,
+  subject: ' سلام! کد تایید شما: ',
+  html: '<p>ایمیلت رسید!</p>'
+});
 res.json(data);
     console.log(req.body)
 }
