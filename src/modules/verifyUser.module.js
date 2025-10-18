@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const VerifyUser = new mongoose.Schema({
     FullName:{
         type : String , 
-        required : true
+        required : false
     },
     email :{
         type : String,

@@ -41,7 +41,7 @@ const resend = new Resend(configs.config.Resend_API_KEY);
   await resend.emails.send({
   from: 'onboarding@resend.dev',
   to: req.body.Gmail,
-  subject: ' سلام! کد تایید شما: ',
+  subject: ` سلام! کد تایید شما: ${code} `,
   html: '<p>ایمیلت رسید!</p>'
 });
 res.json(data);
