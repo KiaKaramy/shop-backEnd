@@ -11,16 +11,16 @@ async function sendcode(req , res){
 const passwordRegex = /^.{1,10}$/;
 const gmailRegex = /^[\w.-]+@gmail\.com$/;
 
-if(!gmailRegex.test(req.body.Gmail)  || !passwordRegex.test(req.body.Password)){
+if(!gmailRegex.test(req.body.email)  || !passwordRegex.test(req.body.password)){
    return res.json({error : "there is problem in value"})
 }
-const user = await Users.find({email : req.body.Gmail});
+const user = await Users.find({email : req.body.email});
 console.log(user);
 
 if(user.length == 0){
     return res.json({error : "there is no account with this email"});
 }
-if(user[0].Password != req.body.Password ){
+if(user[0].Password != req.body.password ){
     return res.json({error : "the passoword is not cuuttt"});
 }
 
@@ -29,8 +29,8 @@ const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
 
 const data = {
-email : req.body.Gmail , 
-Password : req.body.Password,
+email : req.body.email , 
+Password : req.body.password,
 GmailCode : code ,
 expiresAt : expiresAt 
 }
@@ -39,7 +39,7 @@ await verifyUser.create(data);
 const resend = new Resend(configs.config.Resend_API_KEY);
   await resend.emails.send({
   from: 'onboarding@resend.dev',
-  to: req.body.Gmail,
+  to: req.body.email,
   subject: ` سلام! کد تایید شما: ${code} `,
   html: '<p>ایمیلت رسید!</p>'
 });

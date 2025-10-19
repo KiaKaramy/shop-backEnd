@@ -10,10 +10,10 @@ const gmailRegex = /^[\w.-]+@gmail\.com$/;
 const nameRegex = /^[آ-یa-zA-Z\s]+$/;
 const passwordRegex = /^.{1,10}$/;
 
-if(!gmailRegex.test(req.body.Gmail)  || !nameRegex.test(req.body.FullName) || !passwordRegex.test(req.body.Password)){
+if(!gmailRegex.test(req.body.email)  || !nameRegex.test(req.body.fullName) || !passwordRegex.test(req.body.password)){
    return res.json({error : "there is problem in value"})
 }
-const user = await Users.find({email : req.body.Gmail});
+const user = await Users.find({email : req.body.email});
 console.log(typeof(user));
 
 console.log(user)
@@ -27,9 +27,9 @@ const code = Math.floor(100000 + Math.random() * 900000).toString();
 const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
 const data = {
-FullName : req.body.FullName ,
-email : req.body.Gmail , 
-Password : req.body.Password,
+FullName : req.body.fullName ,
+email : req.body.email , 
+Password : req.body.password,
 GmailCode : code ,
 expiresAt : expiresAt 
 }
@@ -40,7 +40,7 @@ const resend = new Resend(configs.config.Resend_API_KEY);
 
   await resend.emails.send({
   from: 'onboarding@resend.dev',
-  to: req.body.Gmail,
+  to: req.body.email,
   subject: ` سلام! کد تایید شما: ${code} `,
   html: '<p>ایمیلت رسید!</p>'
 });
