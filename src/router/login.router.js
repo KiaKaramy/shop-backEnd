@@ -1,8 +1,13 @@
 const express = require("express");
 const LoginRouter = express.Router();
-const { sendcode , checkcode} = require("../controller/login.controller");
+const { sendcode , sendForgetCodePasswordcode , AuthForgetCode ,changPassword} = require("../controller/login.controller");
 
 LoginRouter.post("/sendcode" , sendcode);
-LoginRouter.post("/checkcode" , checkcode);
+LoginRouter.post("/forgetPassword" , sendForgetCodePasswordcode);
+LoginRouter.post("/authCode" , AuthForgetCode)
+LoginRouter.post("/changPassword" , changPassword)
+
+// LoginRouter.post("/checkcode" , checkcode);
+
 
 module.exports = LoginRouter;

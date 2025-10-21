@@ -20,6 +20,10 @@ const VerifyUser = new mongoose.Schema({
     expiresAt : {
         type : Date,
         default : Date.now
+    },
+    NeccecryToken : {
+        type : String , 
+        required : true
     }
 })
 
