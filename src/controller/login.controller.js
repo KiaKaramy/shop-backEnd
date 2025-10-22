@@ -93,7 +93,7 @@ async function sendForgetCodePasswordcode(req , res){
         }
         const user = await Users.findOne({email : email});
         if (!user) {
-        return res.status(401).json({error : "there is no account with this gmail "})
+        return res.status(404).json({error : "there is no account with this gmail "})
         }
 
 
@@ -136,8 +136,10 @@ console.log(token , code);
         return res.status(401).json({error : "the code is not vaild "})
     }
 
-    const user = await ForgetDB.findOne({token : token});
-    
+    const user = await ForgetDB.findOne({token : token , code  : code});
+    if(!user){
+        return res.status(401).json({error : "the code is not vaild"})
+    }
     if(user.email != data.data.email){
         return res.status(401).json({error : "imposter"})
     }
@@ -162,7 +164,7 @@ async function changPassword(req , res) {
     }
     const data = getValueOfToken(token , configs.config.secretTokenValue);
       if (data.status == false) {
-        return res.status(401).json({error : "the code is not vaild "})
+        return res.status(401).json({error : "you dont have acces"})
     }
 
     await Users.findOneAndUpdate({

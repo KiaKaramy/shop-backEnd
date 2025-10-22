@@ -9,6 +9,7 @@ app.use(cors({
   origin: "https://shop-iota-ashen.vercel.app",
   credentials: true,               
 }));
+
 app.use(express.json());
 app.use(cookieParser());
 
