@@ -39,7 +39,8 @@ const {makeTokenAndSaveIT , getValueOfToken} = require("./process");
         const token = makeTokenAndSaveIT(configs.config.secretTokenValue , bodyData.email , '5m' );
         res.cookie("whoIsItVerify" , token , {
         httpOnly : true  ,
-        secure : false
+        secure : true,
+         maxAge: 1000 * 60 * 5
     }) 
 
         
@@ -74,9 +75,12 @@ const {makeTokenAndSaveIT , getValueOfToken} = require("./process");
 async function checkCode(req , res) {
     // const numRegex = /^\d{7}$/ ;
     const code = req.body.code;
-    console.log(req.cookies );
+    console.log(req.cookie );
     
     const whoIsItVerifyToken = req.cookies.whoIsItVerify;
+    console.log(req.headers.cookie);
+console.log(req.cookies);
+
     console.log(whoIsItVerifyToken);
     console.log(whoIsItVerifyToken);
     

@@ -8,7 +8,8 @@ const cors = require("cors");
 // const {GetRegister} = require("")
 app.use(cors({
   origin: "https://shop-iota-ashen.vercel.app",
-  credentials: true,               
+  // origin: "http://127.0.0.1:5500",
+   credentials:true,      
 }));
 
 app.use(express.json());
