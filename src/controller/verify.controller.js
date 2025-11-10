@@ -75,6 +75,7 @@ const {makeTokenAndSaveIT , getValueOfToken} = require("./process");
 async function checkCode(req , res) {
     // const numRegex = /^\d{7}$/ ;
     const code = req.body.code;
+
     console.log(req.cookie );
     
     const whoIsItVerifyToken = req.cookies.whoIsItVerify;
@@ -88,7 +89,7 @@ console.log(req.cookies);
     if(!whoIsItVerifyToken){
         return res.status(401).json({error : "register again"});
     }
-    if (typeof(code) !== "number"){
+    if (typeof(JSON.parse(code)) !== "number"){
         return res.status(401).json({error : "you are fuck dmn right"});
     }
     //check the token if was false it means he edit or delete it

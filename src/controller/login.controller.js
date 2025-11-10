@@ -8,10 +8,9 @@ const ForgetDB = require("../modules/forget.password.module")
 
 
 async function sendcode(req , res){
-const passwordRegex = /^.{1,10}$/;
 const gmailRegex = /^[\w.-]+@gmail\.com$/;
 
-if(!gmailRegex.test(req.body.email)  || !passwordRegex.test(req.body.password)){
+if(!gmailRegex.test(req.body.email)){
    return res.status(401).json({error : "there is problem in value"})
 }
 
