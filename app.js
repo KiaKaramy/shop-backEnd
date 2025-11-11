@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-
 const Verification = require("./src/router/Verification.router");
 const LoginRouter = require("./src/router/login.router");
 const productRoute = require("./src/router/product.router");
@@ -15,6 +14,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookieParser());
+
 
 
 app.use("/verify" , Verification);
