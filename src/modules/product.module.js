@@ -5,16 +5,20 @@ const Product = new mongoose.Schema({
         require : true
     },
     Category : {//
-        type : String ,
+        type : Object ,
         require : true 
     },
        typeOfFrame : {//
-        type : String ,
+        type : Object ,
         require : true
     },
       brand : {//
-        type : String ,
+        type : Object ,
         require : true 
+    },
+    productImage : {
+        type : Object , 
+        require : false,
     },
     Price : {//
         type : Number, 
@@ -66,7 +70,14 @@ const Product = new mongoose.Schema({
         type : String , 
         require : true
     },
-
+    // brandImage : {
+    //     type : String ,
+    //     require: true
+    // },
+    productImage : {
+        type : [String] , 
+        require : true
+    }
 })
 
 module.exports = mongoose.model("Product" , Product)

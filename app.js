@@ -3,6 +3,7 @@ const app = express();
 const Verification = require("./src/router/Verification.router");
 const LoginRouter = require("./src/router/login.router");
 const productRoute = require("./src/router/product.router");
+const {uploadDir} = require("./src/controller/uploadProcess.controller")
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 // const {GetRegister} = require("")
@@ -15,7 +16,9 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-
+uploadDir.forEach(dir => {
+app.use("/upload", express.static(dir));
+});
 
 app.use("/verify" , Verification);
 app.use("/login" , LoginRouter);
