@@ -203,7 +203,6 @@ module.exports = {
     findPorductWithId,
     getAllPorduct,
     getProductByCategory,
-    fileterDataController,
     getProductByTypeOfFrame,
     getProductByBrand,
     getAllBrnad,
