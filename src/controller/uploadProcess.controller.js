@@ -1,6 +1,6 @@
 const multer = require("multer");
 const path = require("path")
-const uploadDir = ["upload" , "upload/productImage" , "upload/brandImage"]
+const uploadDir = ["/upload" , "upload/productImage" , "upload/brandImage"]
 const fs = require("fs");
 
 
